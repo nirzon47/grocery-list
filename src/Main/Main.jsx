@@ -3,6 +3,7 @@ import TodoList from './TodoList'
 import { ToastContainer, toast } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
+import Form from './Form'
 
 const Main = () => {
 	const [data, setData] = useState(
@@ -53,20 +54,7 @@ const Main = () => {
 	return (
 		<div>
 			<ToastContainer />
-			<form className='flex items-center flex-wrap gap-4 justify-center mb-12'>
-				<input
-					type='text'
-					id='input-text'
-					className='input input-bordered min-w-64'
-				/>
-				<button
-					className='btn btn-secondary'
-					onClick={handleAddButton}
-					type='submit'
-				>
-					Add
-				</button>
-			</form>
+			<Form handleAddButton={handleAddButton} />
 			<div className='grid grid-cols-4 w-full gap-6 h-full'>
 				<TodoList
 					data={data}
