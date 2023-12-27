@@ -1,6 +1,6 @@
 const Form = ({ handleAddButton }) => {
 	return (
-		<form className='flex items-center flex-wrap gap-4 justify-center mb-12'>
+		<form className='flex flex-wrap items-center justify-center gap-4 mb-12'>
 			<input
 				type='text'
 				id='input-text'
@@ -11,7 +11,7 @@ const Form = ({ handleAddButton }) => {
 				onClick={handleAddButton}
 				type='submit'
 			>
-				Add
+				Add Item
 			</button>
 		</form>
 	)

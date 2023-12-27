@@ -55,7 +55,7 @@ const Main = () => {
 		<div>
 			<ToastContainer />
 			<Form handleAddButton={handleAddButton} />
-			<div className='grid grid-cols-4 w-full gap-6 h-full'>
+			<div className='grid w-full h-full grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'>
 				<TodoList
 					data={data}
 					setData={setData}
