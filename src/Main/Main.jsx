@@ -9,15 +9,24 @@ const Main = () => {
 		localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : []
 	)
 
-	const handleAddButton = (e) => {
+	const handleAddButton = async (e) => {
 		e.preventDefault()
+
+		const inputText = document.getElementById('input-text').value
+
+		const response = await fetch(
+			`https://api.unsplash.com/search/photos?page=1&per_page=1&query=${inputText}&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
+		)
+
+		const imageSrc = (await response.json()).results[0].urls.regular
 
 		setData([
 			...data,
 			{
 				id: Date.now(),
-				text: document.getElementById('input-text').value,
+				text: inputText,
 				status: false,
+				imageSrc: imageSrc,
 			},
 		])
 
@@ -44,7 +53,7 @@ const Main = () => {
 	return (
 		<div>
 			<ToastContainer />
-			<form className='flex items-center flex-wrap gap-4 justify-center mb-8'>
+			<form className='flex items-center flex-wrap gap-4 justify-center mb-12'>
 				<input
 					type='text'
 					id='input-text'

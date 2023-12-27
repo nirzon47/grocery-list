@@ -55,23 +55,25 @@ const TodoItem = ({ item, data, setData, updateLocalStorage }) => {
 	}
 
 	return (
-		<div className='card w-full bg-base-100 shadow-xl image-full h-full'>
+		<div className='card w-full bg-zinc-400 shadow-xl image-full h-36'>
 			<figure>
 				<img
-					src='https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-					alt='Shoes'
-					className='w-full h-full object-cover'
+					src={item.imageSrc}
+					alt={item.text}
+					className={`w-full h-full object-cover ${
+						item.status ? 'grayscale opacity-40' : ''
+					}`}
 				/>
 			</figure>
-			<div className='card-body'>
+			<div className='card-body justify-between'>
 				<h2
-					className={`card-title capitalize mb-4 ${
+					className={`text-xl font-medium capitalize mb-4 ${
 						item.status ? 'line-through' : ''
 					}`}
 				>
 					{item.text}
 				</h2>
-				<div className='card-actions justify-between mt-8'>
+				<div className='card-actions justify-between'>
 					<button className='btn btn-success btn-sm' onClick={handleDoneButton}>
 						<FaCheck className='text-xl' />
 					</button>
