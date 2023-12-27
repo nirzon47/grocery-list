@@ -2,13 +2,21 @@ import { FaTrashCan, FaCheck } from 'react-icons/fa6'
 import { toast } from 'react-toastify'
 
 const TodoItem = ({ item, data, setData, updateLocalStorage }) => {
+	/**
+	 * Handles the click event of the "Done" button.
+	 *
+	 * @return {void}
+	 */
 	const handleDoneButton = () => {
 		const index = data.findIndex((todo) => todo.id === item.id)
 
+		// If index is found, update the status of the item
 		if (index !== -1) {
 			const newData = [...data]
+			// Remove the item from the array
 			newData.splice(index, 1)
 
+			// Adds to the front or back depending on the status
 			if (item.status) {
 				newData.unshift({ ...item, status: false })
 			} else {
@@ -31,6 +39,12 @@ const TodoItem = ({ item, data, setData, updateLocalStorage }) => {
 		}
 	}
 
+	/**
+	 * Deletes the item from the data array and updates the state and local storage.
+	 *
+	 * @param {none} none - This function does not take any parameters.
+	 * @return {none} This function does not return any value.
+	 */
 	const handleDeleteButton = () => {
 		const index = data.findIndex((todo) => todo.id === item.id)
 
@@ -55,7 +69,7 @@ const TodoItem = ({ item, data, setData, updateLocalStorage }) => {
 	}
 
 	return (
-		<div className='card w-full bg-zinc-400 shadow-xl image-full h-36'>
+		<div className='w-full shadow-xl card bg-zinc-400 image-full h-36'>
 			<figure>
 				<img
 					src={item.imageSrc}
@@ -65,7 +79,7 @@ const TodoItem = ({ item, data, setData, updateLocalStorage }) => {
 					}`}
 				/>
 			</figure>
-			<div className='card-body justify-between'>
+			<div className='justify-between card-body'>
 				<h2
 					className={`text-xl font-medium capitalize mb-4 ${
 						item.status ? 'line-through' : ''
@@ -73,7 +87,7 @@ const TodoItem = ({ item, data, setData, updateLocalStorage }) => {
 				>
 					{item.text}
 				</h2>
-				<div className='card-actions justify-between'>
+				<div className='justify-between card-actions'>
 					<button className='btn btn-success btn-sm' onClick={handleDoneButton}>
 						<FaCheck className='text-xl' />
 					</button>

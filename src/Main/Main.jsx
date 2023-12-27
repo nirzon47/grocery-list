@@ -10,6 +10,12 @@ const Main = () => {
 		localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : []
 	)
 
+	/**
+	 * Handles the click event of the add button.
+	 *
+	 * @param {Event} e - The click event.
+	 * @return {Promise<void>} Promise that resolves when the function completes.
+	 */
 	const handleAddButton = async (e) => {
 		e.preventDefault()
 
@@ -45,6 +51,12 @@ const Main = () => {
 		document.getElementById('input-text').value = ''
 	}
 
+	/**
+	 * Updates the local storage with the given data.
+	 *
+	 * @param {any} data - The data to be stored in the local storage.
+	 * @return {undefined} This function does not return a value.
+	 */
 	const updateLocalStorage = (data) => {
 		localStorage.setItem('data', JSON.stringify(data))
 	}
